@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <!-- Reference to the Bing Maps SDK -->
+    <script type='text/javascript'
+            src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
+    
+    <script type='text/javascript'>
+    function GetMap()
+    {
+        var map = new Microsoft.Maps.Map('#myMap', {
+            credentials: 'AkId5p0j6TMZ1rKjLKVSlxMwz74ZYpo_yN_4YOB0L_LXnYu-xhPIKnLNwYg0gexQ',
+            center: new Microsoft.Maps.Location(40.740496, -73.946771),
+            zoom: 10
+        });
+
+        Microsoft.Maps.Events.addHandler(map, 'click', function (event) {
+            for (var i = map.entities.getLength() - 1; i >= 0; i--) {
+                //var pushpin = map.entities.get(i);
+                map.entities.removeAt(i);
+            }
+            
+            var loc = event.location;
+            var pin = new Microsoft.Maps.Pushpin(loc, {
+                title: 'User Position',
+                color : "blue"
+            });
+            map.entities.push(pin);
+
+            var travelTime = document.getElementById("time").value;
+            var traverlMode = document.getElementById("mode").value;
+            var isochroneQueryString = "maxTime="+ travelTime +"&timeUnit=minute&travelMode=" + traverlMode;         //&maxDistance=5&distanceUnit=mile&optimize=distance
+            isochroneQueryString += "&waypoint=" + loc.latitude + "," + loc.longitude;
+
+            fetch('http://127.0.0.1:8080/isochrone?' + isochroneQueryString)
+                .then(response => response.json())
+                .then(data => {
+                    if(data && data.resourceSets && data.resourceSets.length > 0 && data.resourceSets[0].resources && data.resourceSets[0].resources.length > 0 && data.resourceSets[0].resources[0].polygons){
+                        var polyData = data.resourceSets[0].resources[0].polygons;
+                        var polygons = [];
+                        for(var i=0; i<polyData.length; i++){
+                            var rings = [];
+                            for(var j=0; j<polyData[i].coordinates.length; j++){
+                                var ring = [];
+                                for(var k=0; k<polyData[i].coordinates[j].length; k++){
+                                    ring.push(new Microsoft.Maps.Location(polyData[i].coordinates[j][k][0], polyData[i].coordinates[j][k][1]));
+                                }
+
+                                if (ring.length >= 3) {
+                                    rings.push(ring);
+                                }
+                            }
+
+                            if (rings.length > 0) {
+                                polygons.push(new Microsoft.Maps.Polygon(rings));
+                            }
+                        }
+                        map.entities.push(polygons);
+                    }
+                });
+
+                var localSearchQuery = "type=EatDrink,SeeDo,Shop,BanksAndCreditUnions,Hospitals,HotelsAndMotels,Parking&maxResults=25&userCircularMapView=" + loc.latitude + "," + loc.longitude + ",5000";
+                fetch('http://127.0.0.1:8080/business?' + localSearchQuery)
+                .then(response => response.json())
+                .then(data => {
+                    if(data && data.resourceSets && data.resourceSets.length > 0 && data.resourceSets[0].resources && data.resourceSets[0].resources.length > 0){
+                        var business = data.resourceSets[0].resources;
+                        for(var i=0; i<business.length; i++){
+                            var position = business[i].point.coordinates;
+                            
+                            var pinLoc = new Microsoft.Maps.Location(position[0], position[1]);
+
+                            var pin = new Microsoft.Maps.Pushpin(pinLoc, {
+                                color: 'red',
+                                title : business[i].name
+                            });
+                            map.entities.push(pin);
+                        }
+                    }
+                });
+
+        });
+
+    }
+    </script>
+</head>
+<body>
+    <span>Time Duration</span>
+    <input id='time' type="number" value="15" max="60" style="width:200px;" />
+    <span>Travel Mode</span>
+    <select id='mode'>
+        <option value='driving'>Drive</option>
+        <option value='walking'>Walk</option>
+        <option value='truck'>Truck</option>
+    </select>
+    <div id="myMap" style="position:relative;width:1800px;height:800px;"></div>
+</body>
+</html>
