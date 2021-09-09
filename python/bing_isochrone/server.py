@@ -15,7 +15,7 @@ def getBaseURL(urlPathName):
 
 #To return the bing API key  
 def getBingKey():
-    return "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    return "AkId5p0j6TMZ1rKjLKVSlxMwz74ZYpo_yN_4YOB0L_LXnYu-xhPIKnLNwYg0gexQ"
 
 def getErrorResponse():
     errorJSON = '{"message" : "Unable to fetch data from bing api"}'

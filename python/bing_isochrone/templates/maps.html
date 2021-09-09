@@ -62,25 +62,28 @@
                     }
                 });
 
-                var localSearchQuery = "type=EatDrink,SeeDo,Shop,BanksAndCreditUnions,Hospitals,HotelsAndMotels,Parking&maxResults=25&userCircularMapView=" + loc.latitude + "," + loc.longitude + ",5000";
-                fetch('http://127.0.0.1:8080/business?' + localSearchQuery)
-                .then(response => response.json())
-                .then(data => {
-                    if(data && data.resourceSets && data.resourceSets.length > 0 && data.resourceSets[0].resources && data.resourceSets[0].resources.length > 0){
-                        var business = data.resourceSets[0].resources;
-                        for(var i=0; i<business.length; i++){
-                            var position = business[i].point.coordinates;
+                var isFetchBusinessChecked = document.getElementById("business-entites");
+                if(isFetchBusinessChecked.checked){
+                    var localSearchQuery = "type=EatDrink,SeeDo,Shop,BanksAndCreditUnions,Hospitals,HotelsAndMotels,Parking&maxResults=25&userCircularMapView=" + loc.latitude + "," + loc.longitude + ",5000";
+                    fetch('http://127.0.0.1:8080/business?' + localSearchQuery)
+                        .then(response => response.json())
+                        .then(data => {
+                            if(data && data.resourceSets && data.resourceSets.length > 0 && data.resourceSets[0].resources && data.resourceSets[0].resources.length > 0){
+                            var business = data.resourceSets[0].resources;
+                            for(var i=0; i<business.length; i++){
+                                var position = business[i].point.coordinates;
                             
-                            var pinLoc = new Microsoft.Maps.Location(position[0], position[1]);
+                                var pinLoc = new Microsoft.Maps.Location(position[0], position[1]);
 
-                            var pin = new Microsoft.Maps.Pushpin(pinLoc, {
-                                color: 'red',
-                                title : business[i].name
-                            });
-                            map.entities.push(pin);
+                                var pin = new Microsoft.Maps.Pushpin(pinLoc, {
+                                    color: 'red',
+                                    title : business[i].name
+                                });
+                                map.entities.push(pin);
+                            }
                         }
-                    }
-                });
+                    });
+                }
 
         });
 
@@ -96,6 +99,8 @@
         <option value='walking'>Walk</option>
         <option value='truck'>Truck</option>
     </select>
+    <input type="checkbox" id="business-entites" value="business-entites">
+    <label for="business-entites">Fetch Business Entites</label>
     <div id="myMap" style="position:relative;width:1800px;height:800px;"></div>
 </body>
 </html>
