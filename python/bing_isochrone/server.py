@@ -3,6 +3,7 @@ from flask import jsonify
 from flask import request
 from flask import render_template
 import requests
+import threading
 
 app = Flask(__name__)
 
@@ -11,7 +12,9 @@ def getBaseURL(urlPathName):
     if urlPathName == "business":
         return "https://dev.virtualearth.net/REST/v1/LocalSearch"
     elif urlPathName == "isochrone":
-        return "https://dev.virtualearth.net/REST/v1/Routes/Isochrones"        
+        return "https://dev.virtualearth.net/REST/v1/Routes/IsochronesAsync"   
+    elif urlPathName == "IsochronesAsyncCallback":
+        return "https://dev.virtualearth.net/REST/v1/Routes/IsochronesAsyncCallback"     
 
 #To return the bing API key  
 def getBingKey():
@@ -36,14 +39,37 @@ def isochrone():
     baseUrl = baseUrl + "?" + queryString
     try:
         response = requests.get(baseUrl)
+
+        requestId = response.json()["resourceSets"][0]["resources"][0]["requestId"]
+        callbackTime = response.json()["resourceSets"][0]["resources"][0]["callbackInSeconds"]
+
+        print(response.json()["resourceSets"][0]["resources"][0]["callbackUrl"])
+
         if response.status_code == 200:
-            return response.json()
+            return {'requestId': requestId, 'callbackTime': callbackTime}
         else:
             print("failure")
             return getErrorResponse()
     except:
         return getErrorResponse()
 
+
+@app.route("/isochroneCallback", methods=["GET"])
+def checkCallback():
+    requestId = request.args['requestId']
+    callBackUrl = getBaseURL("IsochronesAsyncCallback") + "?requestId={}&key={}".format(requestId, getBingKey())
+    response = requests.get(callBackUrl)
+    try:
+        callbackTime: int = response.json()["resourceSets"][0]["resources"][0]["callbackInSeconds"]
+        if callbackTime < 0:
+            resultUrl: str = response.json()["resourceSets"][0]["resources"][0]["resultUrl"]
+            resp = requests.get(resultUrl)
+            print(resp.json())
+            return resp.json()
+        else:
+            return {'requestId': requestId, 'callbackTime': callbackTime}
+    except:
+        return getErrorResponse()
 
 #To fetch all local business in a radius of X meters
 #Params that can be passed to to the feautre 
@@ -74,5 +100,5 @@ def map():
     return render_template("maps.html")
 
 if __name__ =='__main__':  
-    app.run(host='127.0.0.1', port=8080)  
+    app.run(host='127.0.0.1', port=8080, debug=True)  
 
