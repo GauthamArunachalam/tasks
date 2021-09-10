@@ -12,6 +12,8 @@ def getBaseURL(urlPathName):
     if urlPathName == "business":
         return "https://dev.virtualearth.net/REST/v1/LocalSearch"
     elif urlPathName == "isochrone":
+        return "https://dev.virtualearth.net/REST/v1/Routes/Isochrones"
+    elif urlPathName == "isochroneAsync":
         return "https://dev.virtualearth.net/REST/v1/Routes/IsochronesAsync"   
     elif urlPathName == "IsochronesAsyncCallback":
         return "https://dev.virtualearth.net/REST/v1/Routes/IsochronesAsyncCallback"     
@@ -24,10 +26,33 @@ def getErrorResponse():
     errorJSON = '{"message" : "Unable to fetch data from bing api"}'
     return jsonify(errorJSON)
 
-#TO fetch isochrone of a region for a specific time travel
 @app.route("/isochrone", methods=["GET"])
 def isochrone():
     baseUrl = getBaseURL("isochrone")
+    params = ["waypoint", "maxDistance", "distanceUnit", "optimize", "travelMode", "maxTime", "timeUnit", "dateTime"]
+    queryString = ""
+
+    for param in params:
+        if param in request.args:
+            queryString += param + "=" + request.args[param]+"&"
+
+    queryString += "key=" + getBingKey()
+    baseUrl = baseUrl + "?" + queryString
+
+    try:
+        response = requests.get(baseUrl)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return getErrorResponse()
+    except:
+        return getErrorResponse()
+
+
+#TO fetch isochrone of a region for a specific time travel
+@app.route("/isochroneAsync", methods=["GET"])
+def isochroneAsync():
+    baseUrl = getBaseURL("isochroneAsync")
     params = ["waypoint", "maxDistance", "distanceUnit", "optimize", "travelMode", "maxTime", "timeUnit", "dateTime"]
     queryString = ""
 
@@ -60,9 +85,9 @@ def checkCallback():
     callBackUrl = getBaseURL("IsochronesAsyncCallback") + "?requestId={}&key={}".format(requestId, getBingKey())
     response = requests.get(callBackUrl)
     try:
-        callbackTime: int = response.json()["resourceSets"][0]["resources"][0]["callbackInSeconds"]
+        callbackTime = response.json()["resourceSets"][0]["resources"][0]["callbackInSeconds"]
         if callbackTime < 0:
-            resultUrl: str = response.json()["resourceSets"][0]["resources"][0]["resultUrl"]
+            resultUrl = response.json()["resourceSets"][0]["resources"][0]["resultUrl"]
             resp = requests.get(resultUrl)
             print(resp.json())
             return resp.json()

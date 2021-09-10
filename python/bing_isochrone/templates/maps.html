@@ -32,7 +32,7 @@
 
           var travelTimeEle = document.getElementById("time");
           var travelTime = travelTimeEle.value;
-          if (travelTime > 0 && travelTime < 420) {
+          if (travelTime > 0 && travelTime <= 420) {
             var loc = event.location;
             var pin = new Microsoft.Maps.Pushpin(loc, {
               title: "User Position",
@@ -49,17 +49,27 @@
             isochroneQueryString +=
               "&waypoint=" + loc.latitude + "," + loc.longitude;
 
-            fetch("http://127.0.0.1:8080/isochrone?" + isochroneQueryString)
-            .then((response) => response.json())
-            .then((data) => {
-            if (data && data.requestId && data.callbackTime) {
-                requestId = data.requestId;
-                callbackTime = data.callbackTime;
-                setTimeout(() => {
-                pollIso(requestId);
-                }, callbackTime);
+            document.getElementById("loading").innerHTML = "Fetching data from bing server..."
+
+            if(travelTime < 60){
+                fetch("http://127.0.0.1:8080/isochrone?" + isochroneQueryString)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        renderIsochrone(data);
+                    })
+            }else{
+                fetch("http://127.0.0.1:8080/isochroneAsync?" + isochroneQueryString)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data && data.requestId && data.callbackTime) {
+                            requestId = data.requestId;
+                            callbackTime = data.callbackTime;
+                            setTimeout(() => {
+                                pollIso(requestId);
+                            }, 5 * 1000);
+                        }
+                    });
             }
-            });
 
             var isFetchBusinessChecked =
               document.getElementById("business-entites");
@@ -112,37 +122,46 @@
         fetch('http://127.0.0.1:8080/isochroneCallback?requestId=' + requestId)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
-            if (data && data.requestId && data.callbackTime){
+            if (data && data.requestId && data.callbackTime && data.callbackTime > 0){
                 requestId = data.requestId
                 callbackTime = data.callbackTime
                 setTimeout(()=>{
                     pollIso(requestId)
-                }, callbackTime)
+                }, 3 * 1000)
+            }else if(data.resourceSets[0].resources[0].errorMessage == "Timeout occurred."){
+                document.getElementById("loading").innerHTML = ""
+                document.getElementById("timedurationError").innerHTML = "Please try with some lower value or try for this value after some time"
             }
-            else if(data && data.resourceSets && data.resourceSets.length > 0 && data.resourceSets[0].resources && data.resourceSets[0].resources.length > 0 && data.resourceSets[0].resources[0].polygons){
-                var polyData = data.resourceSets[0].resources[0].polygons;
-                var polygons = [];
-                for(var i=0; i<polyData.length; i++){
-                    var rings = [];
-                    for(var j=0; j<polyData[i].coordinates.length; j++){
-                        var ring = [];
-                        for(var k=0; k<polyData[i].coordinates[j].length; k++){
-                            ring.push(new Microsoft.Maps.Location(polyData[i].coordinates[j][k][0], polyData[i].coordinates[j][k][1]));
-                        }
+            else{
+                renderIsochrone(data);
+            }
+        });
+    }
 
-                        if (ring.length >= 3) {
-                            rings.push(ring);
-                        }
+    function renderIsochrone(data) {
+        if(data && data.resourceSets && data.resourceSets.length > 0 && data.resourceSets[0].resources && data.resourceSets[0].resources.length > 0 && data.resourceSets[0].resources[0].polygons){
+           document.getElementById("loading").innerHTML = "";
+            var polyData = data.resourceSets[0].resources[0].polygons;
+            var polygons = [];
+            for(var i=0; i<polyData.length; i++){
+                var rings = [];
+                for(var j=0; j<polyData[i].coordinates.length; j++){
+                    var ring = [];
+                    for(var k=0; k<polyData[i].coordinates[j].length; k++){
+                        ring.push(new Microsoft.Maps.Location(polyData[i].coordinates[j][k][0], polyData[i].coordinates[j][k][1]));
                     }
 
-                    if (rings.length > 0) {
-                        polygons.push(new Microsoft.Maps.Polygon(rings));
+                    if (ring.length >= 3) {
+                        rings.push(ring);
                     }
                 }
-                map.entities.push(polygons);
+
+                if (rings.length > 0) {
+                    polygons.push(new Microsoft.Maps.Polygon(rings));
+                }
             }
-        })
+            map.entities.push(polygons);
+        }
     }
     </script>
   </head>
@@ -150,7 +169,7 @@
     <div style="padding: 6px">
       <span>Time Duration</span>
       <input id="time" type="number" value="15" max="60" style="width: 200px" />
-      <span style="display: none" id="timedurationError"></span>
+      <span id="timedurationError" style="color: red"></span>
     </div>
     <div style="padding: 6px">
       <span>Travel Mode</span>
@@ -161,8 +180,11 @@
       </select>
     </div>
     <div style="padding: 6px">
-      <input type="checkbox" id="business-entites" value="business-entites" />
+      <input type="checkbox" id="business-entites" value="business-entites" checked/>
       <label for="business-entites">Fetch Business Entites</label>
+    </div>
+    <div style="padding: 6px">
+        <label id="loading" style="color: green"></label>
     </div>
     <div
       id="myMap"
