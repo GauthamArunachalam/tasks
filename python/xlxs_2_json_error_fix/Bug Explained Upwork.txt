@@ -1,0 +1,20 @@
+1.
+{
+         "surveyQuestions":[
+            {
+               "":"Instructions",
+               "questionText":"report name",
+
+
+There is a missing name tag for the section and instead a nonsense first line within the section. It should look like the following
+
+         "name":"Instructions",
+         "surveyQuestions":[
+            {
+            "questionText":"report name",
+
+2. Boolean tags are written like this
+          "isActive":"true",
+
+but should be
+           "isActive":true,

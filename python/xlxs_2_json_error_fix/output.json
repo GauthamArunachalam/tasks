@@ -1,0 +1,799 @@
+{
+    "sections": [
+        {
+            "surveyQuestions": [
+                {
+                    "questionType": "TEXT",
+                    "questionText": "report name",
+                    "sortOrder": 1,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "surveyor",
+                    "sortOrder": 2,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "asssigned to",
+                    "sortOrder": 3,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "NUMBER",
+                    "questionText": "client firstname",
+                    "sortOrder": 4,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "client lastname",
+                    "sortOrder": 5,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "report reference",
+                    "sortOrder": 6,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "date of inspection",
+                    "sortOrder": 7,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "house / building number",
+                    "sortOrder": 8,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "address line 1",
+                    "sortOrder": 9,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "address line 2",
+                    "sortOrder": 10,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "town",
+                    "sortOrder": 11,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "postcode",
+                    "sortOrder": 12,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "weather conditions",
+                    "sortOrder": 13,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "property status",
+                    "sortOrder": 14,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                }
+            ],
+            "name": "About the inspection"
+        },
+        {
+            "surveyQuestions": [
+                {
+                    "questionType": "TEXT",
+                    "questionText": "our overall opinion of the property",
+                    "sortOrder": 1,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                }
+            ],
+            "name": "Overall opinion"
+        },
+        {
+            "surveyQuestions": [
+                {
+                    "questionType": "TEXT",
+                    "questionText": "type of property",
+                    "sortOrder": 1,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "NUMBER",
+                    "questionText": "approximate year property was built",
+                    "sortOrder": 2,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "approximate year the property was extended",
+                    "sortOrder": 3,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "approximate year the property was converted",
+                    "sortOrder": 4,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "information relevant to flats and maisonettes",
+                    "sortOrder": 5,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                }
+            ],
+            "name": "About the property"
+        },
+        {
+            "surveyQuestions": [
+                {
+                    "questionType": "NUMBER",
+                    "questionText": "living rooms",
+                    "sortOrder": 1,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "NUMBER",
+                    "questionText": "bedrooms",
+                    "sortOrder": 2,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "NUMBER",
+                    "questionText": "bath or shower",
+                    "sortOrder": 3,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "NUMBER",
+                    "questionText": "separate toilet",
+                    "sortOrder": 4,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "NUMBER",
+                    "questionText": "kitchen",
+                    "sortOrder": 5,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "NUMBER",
+                    "questionText": "utility room",
+                    "sortOrder": 6,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "NUMBER",
+                    "questionText": "conservatory",
+                    "sortOrder": 7,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                }
+            ],
+            "name": "Accommodation"
+        },
+        {
+            "surveyQuestions": [
+                {
+                    "questionType": "TEXT",
+                    "questionText": "construction",
+                    "sortOrder": 1,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "energy-efficiency rating",
+                    "sortOrder": 2,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "environmental impact rating",
+                    "sortOrder": 3,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                }
+            ],
+            "name": "About the property 2"
+        },
+        {
+            "surveyQuestions": [
+                {
+                    "questionType": "YESNO",
+                    "questionText": "gas",
+                    "sortOrder": 1,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "YESNO",
+                    "questionText": "electricity",
+                    "sortOrder": 2,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "YESNO",
+                    "questionText": "water",
+                    "sortOrder": 3,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "YESNO",
+                    "questionText": "drainage",
+                    "sortOrder": 4,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                }
+            ],
+            "name": "Mains services"
+        },
+        {
+            "surveyQuestions": [
+                {
+                    "questionType": "YESNO",
+                    "questionText": "gas",
+                    "sortOrder": 1,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "YESNO",
+                    "questionText": "electric",
+                    "sortOrder": 2,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "YESNO",
+                    "questionText": "solid fuel",
+                    "sortOrder": 3,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "YESNO",
+                    "questionText": "oil",
+                    "sortOrder": 4,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "YESNO",
+                    "questionText": "none",
+                    "sortOrder": 5,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                }
+            ],
+            "name": "Central heating"
+        },
+        {
+            "surveyQuestions": [
+                {
+                    "questionType": "TEXT",
+                    "questionText": "other services or energy sources",
+                    "sortOrder": 1,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "grounds",
+                    "sortOrder": 2,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "location",
+                    "sortOrder": 3,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "facilities",
+                    "sortOrder": 4,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "local environment",
+                    "sortOrder": 5,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                }
+            ],
+            "name": "About the property 3"
+        },
+        {
+            "surveyQuestions": [
+                {
+                    "questionType": "TEXT",
+                    "questionText": "E1 - chimney stacks",
+                    "sortOrder": 1,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "E2 - roof coverings",
+                    "sortOrder": 2,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "E3 - rainwater pipes and gutters",
+                    "sortOrder": 3,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "E4 - main walls",
+                    "sortOrder": 4,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "E5 - windows",
+                    "sortOrder": 5,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "E6 - outside doors",
+                    "sortOrder": 6,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "E7 - conservatory and porches",
+                    "sortOrder": 7,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "E8 - other joinery and finishes",
+                    "sortOrder": 8,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "E9 - other",
+                    "sortOrder": 9,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                }
+            ],
+            "name": "Outside the property"
+        },
+        {
+            "surveyQuestions": [
+                {
+                    "questionType": "TEXT",
+                    "questionText": "F1 - roof strucuture",
+                    "sortOrder": 1,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "F2 - ceilings",
+                    "sortOrder": 2,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "F3 - walls and partitions",
+                    "sortOrder": 3,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "F4 - floors",
+                    "sortOrder": 4,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "F5 - fireplaces, chimney breasts and flues",
+                    "sortOrder": 5,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "F6 - built-in fittings",
+                    "sortOrder": 6,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "F7 - woodwork",
+                    "sortOrder": 7,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "F8 - bathroom fittings",
+                    "sortOrder": 8,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "F9 - other",
+                    "sortOrder": 9,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                }
+            ],
+            "name": "Inside the property"
+        },
+        {
+            "surveyQuestions": [
+                {
+                    "questionType": "TEXT",
+                    "questionText": "limitations to inspections",
+                    "sortOrder": 1,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "G1 - electricity",
+                    "sortOrder": 2,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "G2 - gas/oil",
+                    "sortOrder": 3,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "G3 - water",
+                    "sortOrder": 4,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "G4 - heating",
+                    "sortOrder": 5,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "G5 - water heating",
+                    "sortOrder": 6,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "G6 - drainage",
+                    "sortOrder": 7,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "G7 - common services",
+                    "sortOrder": 8,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                }
+            ],
+            "name": "Services"
+        },
+        {
+            "surveyQuestions": [
+                {
+                    "questionType": "TEXT",
+                    "questionText": "limitations to inspection",
+                    "sortOrder": 1,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "H1 - garage",
+                    "sortOrder": 2,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "H2 - other",
+                    "sortOrder": 3,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "H3 - general",
+                    "sortOrder": 4,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                }
+            ],
+            "name": "Grounds"
+        },
+        {
+            "surveyQuestions": [
+                {
+                    "questionType": "TEXT",
+                    "questionText": "I1 - regulation",
+                    "sortOrder": 1,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "I2 - guarantees",
+                    "sortOrder": 2,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "I3 - other matters",
+                    "sortOrder": 3,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                }
+            ],
+            "name": "Issues for legal advisers"
+        },
+        {
+            "surveyQuestions": [
+                {
+                    "questionType": "TEXT",
+                    "questionText": "J1 - risks to buildings",
+                    "sortOrder": 1,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "J2 - risks to grounds",
+                    "sortOrder": 2,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "J3 - risks to people",
+                    "sortOrder": 3,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "J4 - other",
+                    "sortOrder": 4,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                }
+            ],
+            "name": "Risks"
+        },
+        {
+            "surveyQuestions": [
+                {
+                    "questionType": "TEXT",
+                    "questionText": "market value date",
+                    "sortOrder": 1,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "NUMBER",
+                    "questionText": "value",
+                    "sortOrder": 2,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "value in words",
+                    "sortOrder": 3,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "LIST",
+                    "questionText": "tenure",
+                    "sortOrder": 4,
+                    "questionHelp": "",
+                    "options": "Leasehold;Freehold",
+                    "isActive": true
+                },
+                {
+                    "questionType": "NUMBER",
+                    "questionText": "area of property",
+                    "sortOrder": 5,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "NUMBER",
+                    "questionText": "reinstatement cost",
+                    "sortOrder": 6,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "reinstatement cost in words",
+                    "sortOrder": 7,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "any additional assumptions",
+                    "sortOrder": 8,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                },
+                {
+                    "questionType": "TEXT",
+                    "questionText": "other considerations affecting value",
+                    "sortOrder": 9,
+                    "questionHelp": "",
+                    "options": "",
+                    "isActive": true
+                }
+            ],
+            "name": "Valuation"
+        }
+    ]
+}
